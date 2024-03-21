@@ -1,0 +1,15 @@
+{
+    "name": "adithya/unikone-web",
+    "autoload": {
+        "psr-4": {
+            "Adithya\\UnikoneWeb\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "adithya bandara",
+            "email": "Dammikaekanayaka1980@gmail.com"
+        }
+    ],
+    "require": {}
+}
