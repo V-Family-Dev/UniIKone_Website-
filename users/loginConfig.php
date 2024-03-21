@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($checkUserType == 1) {
                     $_SESSION['username'] = $username;
                     $_SESSION['loginType'] = 1;
-                    echo "admin";
+                    header("Location:../Views/empDashboard.php");
                 } else {
                     $_SESSION['username'] = $username;
                     $_SESSION['loginType'] = 2;
