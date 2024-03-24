@@ -23,6 +23,7 @@
 <body>
     <h1>Employee Dashboard</h1>
     <h1>Admin</h1>    
+    <a href="../employees/empRegistration.php">Add employee</a>
     
 </body>
 </html>
