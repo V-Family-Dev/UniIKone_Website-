@@ -35,6 +35,22 @@ function getNewEmployeeNumber($conn)
     }
 }
 
+
+function getempId($conn)
+{
+    $sql = "SELECT EmpNumber FROM employees";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+       $empNumber=[];
+        while ($row = $result->fetch_assoc()) {
+           $empNumber[]=$row;
+        }
+    }
+
+    return $empNumber;
+}
+
 // validation and Sanitization 
 function test_input($data)
 {
@@ -43,8 +59,6 @@ function test_input($data)
     $data = htmlspecialchars($data);
     return $data;
 }
-
-
 
 // add new emp
 function insertEmployee($conn, $firstName, $lastName, $nic, $employeeNumber, $refNumber, $primaryNumber, $secondNumber, $town, $province, $postalcode, $accountNum, $bankName, $bankCode, $branchName, $branchCode, $joindate, $address, $accountHolderName)
@@ -74,8 +88,6 @@ function insertEmployee($conn, $firstName, $lastName, $nic, $employeeNumber, $re
 // get all the emp details
 function getAllEmployees($conn)
 {
-
-
     $sql = "SELECT * FROM employees";
     $result = $conn->query($sql);
 
@@ -107,4 +119,19 @@ function deleteEmployee($id, $conn)
         // Handle error - failed to prepare statement
         return false; // Indicate failure
     }
+}
+
+function gellAllbanckCode($conn)
+{
+    $sql = "SELECT bankcode,bankname from bankcodes;";
+
+    $result = $conn->query($sql);
+    $bankDetails = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $bankDetails[] = $row;
+        }
+    }
+
+    return $bankDetails;
 }

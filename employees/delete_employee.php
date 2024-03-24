@@ -1,7 +1,5 @@
 <?php
-require "../DB/dbconfig.php";
-require "../functions/employee/employeesFunctions.php";
-
+require "../header/include.php";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 

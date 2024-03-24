@@ -1,9 +1,13 @@
 <?php
-require "../DB/dbconfig.php";
-require "../functions/employee/employeesFunctions.php";
 
-
+require "../header/include.php";
+// get the new employeenumber
 $newEmpNumber = getNewEmployeeNumber($conn);
+
+
+
+
+
 $firstNameErr = $lastNameErr = $nicErr = $employeeNumberErr = $refNumberErr = $primaryNumberErr = $secondNumberErr = $addressErr = $joinDateErr = $townErr = $provinceErr = $postalcodeErr = $refNumberErr = $bankNameErr = $bankCodeErr = $branchNameErr = $branchCodeErr = $accountHolderNameErr = $accountNumberErr = "";
 $firstName = $lastName = $nic = $employeeNumber = $refNumber = $primaryNumber = $secondNumber = $address = $joindate = $town = $province = $postalcode = $refNumber = $bankName = $bankCode = $branchName = $branchCode = $accountHolderName = $accountNumber = "";
 
@@ -49,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $address = test_input($_POST["address"]);
     }
     if (empty($_POST["joinDate"])) {
-        $joindate ="";
+        $joindate = "";
     } else {
-        $joindate = test_input( $_POST["joinDate"]);
+        $joindate = test_input($_POST["joinDate"]);
     }
     if (empty($_POST["town"])) {
         $town = "";
@@ -124,11 +128,31 @@ try {
 
     <label for="employeeNumber">Employee Number:</label>
     <input type="text" id="employeeNumber" name="employeeNumber" value="<?php echo $newEmpNumber; ?>" readonly><br>
+    <!-- 
+        <label for="refNumber">Ref Number:</label>
+        <input type="text" id="refNumber" name="refNumber"><br> -->
 
-    <label for="refNumber">Ref Number:</label>
-    <input type="text" id="refNumber" name="refNumber"><br>
+    <label for="bankSelect">Ref Number:</label>
+    <select id="refNumber" name="refNumber">
+        <option value="">select refnumberk</option>
+        <?php
+        $refNo = getempId($conn);
+        foreach ($refNo as $ref) {
+            echo '<option value="' . htmlspecialchars($ref['EmpNumber']) . '">' . htmlspecialchars($ref['EmpNumber']) . '</option>';
+        }
+        ?>
+    </select>
 
-    <label for="primaryNumber">Primary Number</label>
+    <script>
+        $(document).ready(function() {
+            $('#refNumber').select2({
+                placeholder: "Enter a ref",
+                allowClear: true
+            })
+        });
+    </script>
+
+    <br> <label for="primaryNumber">Primary Number</label>
     <input type="text" id="primaryNumber" name="primaryNumber" value=""><br>
 
     <label for="secondaryNumber">Secondary Number</label>
@@ -163,15 +187,43 @@ try {
 
 
     <p>bank details</p>
-
+    <!-- 
     <label for="bankName">Bank Name:</label>
-    <input type="text" id="bankName" name="bankName" value=""><br>
+    <input type="text" id="bankName" name="bankName" value=""><br> -->
+    <label for="bankSelect">Bank:</label>
+    <select id="bankSelect" name="bankName">
+        <option value="">Select Bank</option>
+        <?php
+        $bankDetails = gellAllbanckCode($conn);
+        foreach ($bankDetails as $bank) {
+            echo '<option value="' . htmlspecialchars($bank['bankcode']) . '">' . htmlspecialchars($bank['bankname']) . '</option>';
+        }
+        ?>
+    </select>
 
-    <label for="bankCode">Bank Code:</label>
+    <br><label for="bankCode">Bank Code:</label>
     <input type="text" id="bankCode" name="bankCode" value=""><br>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#bankSelect').select2({
+                placeholder: "Enter a bank",
+                allowClear: true
+            }).on('select2:select', function(e) {
+                var selectedBankCode = e.params.data.id;
+                $('#bankCode').val(selectedBankCode);
+            });
+        });
+    </script>
+
+
+
 
     <label for="branchName">Branch Name:</label>
     <input type="text" id="branchName" name="branchName" value=""><br>
+
+
 
     <label for="branchCode">Branch Code:</label>
     <input type="text" id="branchCode" name="branchCode" value=""><br>

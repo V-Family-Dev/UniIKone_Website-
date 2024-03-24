@@ -1,6 +1,5 @@
 <?php
-require "../DB/dbconfig.php";
-require "../functions/employee/employeesFunctions.php";
+require "../header/include.php";
 
 $allEmployees = getAllEmployees($conn);
 
