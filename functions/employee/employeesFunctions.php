@@ -135,3 +135,19 @@ function gellAllbanckCode($conn)
 
     return $bankDetails;
 }
+
+function gellAllbranchCode($conn)
+{
+    $sql = "SELECT branchcode,branchname from branchcodes;";
+
+    $result = $conn->query($sql);
+    $branchcodes = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $branchcodes[] = $row;
+        }
+    }
+
+    return $branchcodes;
+}
+

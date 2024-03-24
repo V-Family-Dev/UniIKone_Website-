@@ -4,10 +4,6 @@ require "../header/include.php";
 // get the new employeenumber
 $newEmpNumber = getNewEmployeeNumber($conn);
 
-
-
-
-
 $firstNameErr = $lastNameErr = $nicErr = $employeeNumberErr = $refNumberErr = $primaryNumberErr = $secondNumberErr = $addressErr = $joinDateErr = $townErr = $provinceErr = $postalcodeErr = $refNumberErr = $bankNameErr = $bankCodeErr = $branchNameErr = $branchCodeErr = $accountHolderNameErr = $accountNumberErr = "";
 $firstName = $lastName = $nic = $employeeNumber = $refNumber = $primaryNumber = $secondNumber = $address = $joindate = $town = $province = $postalcode = $refNumber = $bankName = $bankCode = $branchName = $branchCode = $accountHolderName = $accountNumber = "";
 
@@ -128,9 +124,6 @@ try {
 
     <label for="employeeNumber">Employee Number:</label>
     <input type="text" id="employeeNumber" name="employeeNumber" value="<?php echo $newEmpNumber; ?>" readonly><br>
-    <!-- 
-        <label for="refNumber">Ref Number:</label>
-        <input type="text" id="refNumber" name="refNumber"><br> -->
 
     <label for="bankSelect">Ref Number:</label>
     <select id="refNumber" name="refNumber">
@@ -183,9 +176,6 @@ try {
     <label for="postalCode">Postal Code</label>
     <input type="text" id="postalCode" name="postalCode" value=""><br>
 
-
-
-
     <p>bank details</p>
     <!-- 
     <label for="bankName">Bank Name:</label>
@@ -204,7 +194,6 @@ try {
     <br><label for="bankCode">Bank Code:</label>
     <input type="text" id="bankCode" name="bankCode" value=""><br>
 
-
     <script>
         $(document).ready(function() {
             $('#bankSelect').select2({
@@ -218,28 +207,40 @@ try {
     </script>
 
 
+    <label for="branchselect">Branch Name</label>
+    <select id="branchselect" name="branchName">
+        <option value="">Select Bank</option>
+        <?php
+        $branchcodes = gellAllbranchCode($conn);
+        foreach ($branchcodes as $branch) {
+            echo '<option value="' . htmlspecialchars($branch['branchname']) . '" ' .
+                'data-branchcode="' . htmlspecialchars($branch['branchcode']) . '">' .
+                htmlspecialchars($branch['branchname']) . '-' . htmlspecialchars($branch['branchcode']) . '</option>';
+        }
+        ?>
+    </select>
 
 
-    <label for="branchName">Branch Name:</label>
-    <input type="text" id="branchName" name="branchName" value=""><br>
-
-
-
-    <label for="branchCode">Branch Code:</label>
+    <br><label for="branchCode">Branch Code:</label>
     <input type="text" id="branchCode" name="branchCode" value=""><br>
 
+
+    <script>
+        $(document).ready(function() {
+            $('#branchselect').select2({
+                placeholder: "Enter a bank",
+                allowClear: true
+            }).on('select2:select', function(e) {
+                var selectedBranchCode = $(this).find(':selected').data('branchcode');
+                $('#branchCode').val(selectedBranchCode);
+            });
+        });
+    </script>
     <label for="accountHolderName">Account Holder Name:</label>
     <input type="text" id="accountHolderName" name="accountHolderName" value=""><br>
 
     <label for="accountNumber">Account Number:</label>
     <input type="text" id="accountNumber" name="accountNumber" value=""><br>
-
-
-
-
-
-
-    <!-- Other form fields -->
 
     <input type="submit" name="submit" value="Submit">
 </form>
