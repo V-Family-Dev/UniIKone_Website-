@@ -1,17 +1,23 @@
 <?php
 
 // Database connection
-$hostname = "127.0.0.1";
+$hostname = "127.0.0.1:3308";
 $username = "root";
-$password = "ABandara2001";
+$password = "admin";
 $dbname = "db_mlm";
 
 try {
-    $conn = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+    $conn = new mysqli($hostname, $username, $password, $dbname);
     // Set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully"; 
-} catch(PDOException $e) {
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    } else { ?>
+        <script>
+            console.log("Connected successfully");
+        </script>
+<?php
+    }
+} catch (Exception $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 ?>
