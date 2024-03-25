@@ -76,6 +76,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST['neworder']) {
             'salesDate' => $salesDate,
             'dueDate' => $dueDate
         );
+
+
         for ($i = 1; $i <= $howManyItems; $i++) {
 
 
@@ -83,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST['neworder']) {
                 isset($_POST["selectitem"][$i - 1], $_POST["item-name-$i"], $_POST["price-$i"]) &&
                 !empty($_POST["item-name-$i"]) && !empty($_POST["price-$i"])
             ) {
+
                 $itemCode = $_POST["selectitem"][$i - 1];
 
                 $itemName = $_POST["item-name-$i"];
@@ -97,8 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST['neworder']) {
                 );
             }
         }
-
-        sOrderADD($conn, $userdata, $howMdata);
+        try {
+            sOrderADD($conn, $userdata, $howMdata);
+        } catch (Exception $e) {
+            echo "An error occurred: " . $e->getMessage();
+        }
     } else {
         echo "Error in form submission";
     }

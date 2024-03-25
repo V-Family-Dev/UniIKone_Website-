@@ -1,6 +1,24 @@
 <?php
 
 
+function get_dataorder($conn)
+{
+    $data = array();
+    $getdata = $conn->prepare("SELECT * FROM `salesorders`");
+    $getdata->execute();
+    $result = $getdata->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $data[] = ['sonumber' => $row['SONumber'], 'salesdate' => $row['SalesDate'], 'duedate' => $row['DueDate'], 'contactname' => $row['ContactName'], 'contactno' => $row['ContactNo'], 'empno' => $row['EmpNo'], 'address' => $row['address'], 'itemqty' => $row['ItemQty'], 'city' => $row['City']];
+    }
+    $getdata->close();
+    return $data;
+}
+
+
+
+
+
+
 
 
 

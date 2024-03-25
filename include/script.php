@@ -7,10 +7,12 @@
             $(this).nextAll('input[name^="price"]').val(selectedPrice);
         });
 
-        let itemno = parseInt($('#hdata').val(), 10);
-        itemno = itemno + 1;
+
+
 
         $('#addFieldButton').click(function() {
+            let itemno = parseInt($('#hdata').val(), 10);
+            itemno++;
             let newItemHtml = `
                 <div class="item-group-${itemno}">
                     <select name="selectitem[]" class="item-select">
@@ -31,18 +33,20 @@
                 $(this).nextAll('input[name^="item-name"]').val(selectedName);
                 $(this).nextAll('input[name^="price"]').val(selectedPrice);
             });
-
-            $('#hdata').val(itemno);
+            let itemnos = parseInt($('#hdata').val(), 10);
+            itemnos++;
+            $('#hdata').val(itemnos);
         });
 
         $('#removef').click(function() {
-            let itemnom = parseInt($('#hdata').val(), 10) - 1;
-            var itemGroup = $('#fieldsContainer .item-group-' + itemnom);
-            if (itemGroup.length > 0) {
-                itemGroup.remove();
+            let itemnom = parseInt($('#hdata').val(), 10);
+            if (itemnom > 1) {
+                $('#fieldsContainer .item-group-' + itemnom).remove();
+                itemnom--;
                 $('#hdata').val(itemnom);
             }
         });
+
     });
 </script>
 

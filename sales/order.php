@@ -67,9 +67,11 @@
             <input type="text" name="quantity-1" placeholder="Quantity">
         </div>
         <div id="fieldsContainer"></div>
-        <input type="hidden" name="hdata" id="hdata" value="1">
+        <input type="text" name="hdata" id="hdata" value="1"><br>
+
+
         <button type="button" id="addFieldButton">Add More</button>
-        <button type="button" id="removef">Remove</button>
+        <button type="button" id="removef">Remove</button><br>
 
 
         <input type="submit" id='Submit' name="neworder" value="Submit">
@@ -78,9 +80,36 @@
     </form>
 
 
+
+
+
+
     <hr>
     <hr>
-    
+
+    <table id="mytable" class="display">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Item Code</th>
+                <th>Unit Price </th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td><button type="button" id="edit">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+
 
 
 
@@ -91,7 +120,11 @@
 
 
 
-
+<script>
+    $(document).ready(function() {
+        $('#mytable').DataTable();
+    });
+</script>
 
 <?php
 require '../include/script.php';
