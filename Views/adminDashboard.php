@@ -1,6 +1,8 @@
 <?php
 require_once '../includes/login/login.view.inc.php';
-require_once '../includes/config_session.inc.php';
+require_once '../includes/config_session.inc.php';  
+
+
 ?>
 
 <!DOCTYPE html>
@@ -13,10 +15,9 @@ require_once '../includes/config_session.inc.php';
 
 <body>
     <h1>Employee Dashboard</h1>
-    <h1>Employee</h1>
+    <h1>Admin</h1>
     <?php
     checkLoginError();
     ?>
 </body>
-
 </html>
