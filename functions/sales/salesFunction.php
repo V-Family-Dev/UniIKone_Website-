@@ -4,11 +4,11 @@
 function get_dataorder($conn)
 {
     $data = array();
-    $getdata = $conn->prepare("SELECT * FROM `salesorders`");
+    $getdata = $conn->prepare("SELECT `sonumber`, `SalesDate`, `DueDate`,`ContactName`, `ContactNo`,`EmpNo`, `Total`, `ItemQty`FROM `salesorders`");
     $getdata->execute();
     $result = $getdata->get_result();
     while ($row = $result->fetch_assoc()) {
-        $data[] = ['sonumber' => $row['SONumber'], 'salesdate' => $row['SalesDate'], 'duedate' => $row['DueDate'], 'contactname' => $row['ContactName'], 'contactno' => $row['ContactNo'], 'empno' => $row['EmpNo'], 'address' => $row['address'], 'itemqty' => $row['ItemQty'], 'city' => $row['City']];
+        $data[] = ['sonumber' => $row['sonumber'], 'SalesDate' => $row['SalesDate'], 'DueDate' => $row['DueDate'], 'ContactName' => $row['ContactName'], 'ContactNo' => $row['ContactNo'], 'EmpNo' => $row['EmpNo'], 'Total' => $row['Total'], 'ItemQty' => $row['ItemQty']];
     }
     $getdata->close();
     return $data;

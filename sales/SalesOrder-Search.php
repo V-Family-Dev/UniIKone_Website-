@@ -7,36 +7,52 @@ require '../include/head.php'; ?>
 
     <h1>Sales Order Search</h1>
 
-    <table id="myTable">
+    <table id="mytable" class="display">
         <thead>
             <tr>
                 <th>So No</th>
                 <th>Employee ID</th>
                 <th>Contact Person</th>
                 <th>Contact No</th>
-                <th>City</th>
+                <th>Sales Date</th>
+                <th>Due Date</th>
+                <th>Amount</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
 
             </tr>
         </thead>
         <tbody>
             <?php
-            $item = getSalesData();
-            foreach ($item as $row) { ?>
+            $tabledata = get_dataorder($conn);
+            foreach ($tabledata as $row) {
+
+            ?>
                 <tr>
-                    <td><?= $row['ItemCode']; ?></td>
-                    <td><?= $row['ItemName']; ?></td>
-                    <td><?= $row['Price']; ?></td>
-                    <td><?= $row['Quantity']; ?></td>
-                    <td><?= $row['Price'] * $row['Quantity']; ?></td>
+                    <td><?php echo $row['sonumber']; ?></td>
+                    <td><?php echo $row['EmpNo']; ?></td>
+                    <td><?php echo $row['ContactName']; ?></td>
+                    <td><?php echo $row['ContactNo']; ?></td>
+                    <td><?php echo $row['SalesDate']; ?></td>
+                    <td><?php echo $row['DueDate']; ?></td>
+                    <td><?php echo $row['Total']; ?></td>
+                    <td><button type="button" id="edit">Edit</button></td>
+                    <td><button type="button" id="delete">Delete</button></td>
                 </tr>
-            <?php } ?>
+            <?php
+            }
+            ?>
+
+
 
         </tbody>
     </table>
 
     <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
+        $('#mytable').DataTable({
+            "pageLength": 50,
+
         });
     </script>
 

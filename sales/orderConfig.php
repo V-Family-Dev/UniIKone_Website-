@@ -1,6 +1,6 @@
 <?php
 
-require_once '../functions/user/salesFunction.php';
+require_once '../sales/user/salesFunction.php';
 require_once '../DB/dbconfig.php';
 
 

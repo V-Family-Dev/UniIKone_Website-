@@ -1,7 +1,7 @@
 <?php
 require_once('../include/auth.php');
 
-require '../functions/user/salesFunction.php';
+require '../functions/sales/salesFunction.php';
 require '../DB/dbconfig.php';
 ?>
 <!DOCTYPE html>
