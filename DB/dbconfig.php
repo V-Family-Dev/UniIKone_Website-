@@ -4,7 +4,7 @@
 $hostname = "127.0.0.1:3308";
 $username = "root";
 $password = "admin";
-$dbname = "db_mlm";
+$dbname = "db_mlm_ori";
 
 try {
     $conn = new mysqli($hostname, $username, $password, $dbname);

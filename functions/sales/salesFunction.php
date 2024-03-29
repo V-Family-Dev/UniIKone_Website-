@@ -1,7 +1,86 @@
 <?php
 
 
-function get_dataorder($conn)
+function pagination($conn, $limit, $page)
+{
+    $sql = "SELECT COUNT(*) FROM `salesorders`";
+    $result = $conn->query($sql);
+    $row = $result->fetch_row();
+    $total_records = $row[0];
+    $total_pages = ceil($total_records / $limit);
+
+    $pageLink = "<div class='pagination'>";
+
+    // Calculate start and end of the range of page links
+    $start = max(1, $page - 10);
+    $end = min($total_pages, $page + 5);
+
+    // Adjust the range if it doesn't show 10 pages
+    if ($end - $start < 9) {
+        // If at the beginning of the pagination
+        if ($start == 1) {
+            // Extend end to show 10 pages
+            $end = min(10, $total_pages);
+        }
+        // If at the end of the pagination
+        else if ($end == $total_pages) {
+            // Extend start to show 10 pages
+            $start = max(1, $end - 9);
+        }
+    }
+
+    // Previous page link
+    if ($page > 1) {
+        $pageLink .= "<a href='SalesOrder-Search.php?page=" . ($page - 1) . "'>&laquo;</a>";
+    }
+
+    // Generate page number links
+    for ($i = $start; $i <= $end; $i++) {
+        $activeClass = ($page == $i) ? 'active' : '';
+        $pageLink .= "<a class='$activeClass' href='SalesOrder-Search.php?page=" . $i . "'>" . $i . "</a>";
+    }
+
+    // Next page link
+    if ($page < $total_pages) {
+        $pageLink .= "<a href='SalesOrder-Search.php?page=" . ($page + 1) . "'>&raquo;</a>";
+    }
+
+    $pageLink .= "</div>";
+    echo $pageLink;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function get_dataorder($conn, $limit, $page)
+{
+    $data = array();
+    $getdata = $conn->prepare("SELECT `sonumber`, `SalesDate`, `DueDate`,`ContactName`, `ContactNo`,`EmpNo`, `Total`, `ItemQty`FROM `salesorders` LIMIT $limit OFFSET " . ($page - 1) * $limit);
+    $getdata->execute();
+    $result = $getdata->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $data[] = ['sonumber' => $row['sonumber'], 'SalesDate' => $row['SalesDate'], 'DueDate' => $row['DueDate'], 'ContactName' => $row['ContactName'], 'ContactNo' => $row['ContactNo'], 'EmpNo' => $row['EmpNo'], 'Total' => $row['Total'], 'ItemQty' => $row['ItemQty']];
+    }
+    $getdata->close();
+    return $data;
+}
+
+
+
+
+
+
+
+function get_dataorders($conn)
 {
     $data = array();
     $getdata = $conn->prepare("SELECT `sonumber`, `SalesDate`, `DueDate`,`ContactName`, `ContactNo`,`EmpNo`, `Total`, `ItemQty`FROM `salesorders`");

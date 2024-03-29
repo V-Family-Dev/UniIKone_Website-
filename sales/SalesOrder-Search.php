@@ -1,6 +1,14 @@
 <?php
 
-require '../include/head.php'; ?>
+require '../include/head.php';
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}
+
+
+?>
 
 
 <body>
@@ -25,7 +33,7 @@ require '../include/head.php'; ?>
         </thead>
         <tbody>
             <?php
-            $tabledata = get_dataorder($conn);
+            $tabledata = get_dataorder($conn, 10, $page);
             foreach ($tabledata as $row) {
 
             ?>
@@ -48,6 +56,12 @@ require '../include/head.php'; ?>
 
         </tbody>
     </table>
+
+    <?php
+
+    pagination($conn, 10, $page);
+
+    ?>
 
     <script>
         $('#mytable').DataTable({

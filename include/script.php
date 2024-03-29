@@ -18,7 +18,7 @@
                     <select name="selectitem[]" class="item-select">
                         <option value="">Select Item</option>
                         <?php foreach ($item as $row) { ?>
-                            <option value="<?= $row['ItemCode']; ?>" data-iname="<?= $row['ItemName']; ?>" data-price="<?= $row['Price']; ?>"><?= $row['ItemCode']; ?></option>
+                            <option value="<?= $row['ItemCode']; ?>" data-iname="<?= $row['ItemName']; ?>" data-price="<?= $row['Price']; ?>"><?= $row['ItemName']; ?></option>
                         <?php } ?>
                     </select>
                     <input type="text" name="item-name-${itemno}" placeholder="Item Name">
@@ -53,7 +53,7 @@
 <script>
     $(document).ready(function() {
         $('#getempdata').select2({
-            placeholder: "Enter a bank",
+            placeholder: "User Emp ID",
             allowClear: true
         }).on('select2:select', function(e) {
             var selectedContactName = $(this).find(':selected').data('name');

@@ -2,6 +2,12 @@
 require_once '../DB/dbconfig.php';
 require_once '../functions/item/itemFunction.php';
 
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -46,13 +52,20 @@ require_once '../functions/item/itemFunction.php';
                     <th>Item Code</th>
                     <th>Item Name</th>
                     <th>Item Price</th>
-                    <!-- Additional headers for Level 1, Level 2, etc... -->
+                    <th>Level 1</th>
+                    <th>Level 2</th>
+                    <th>Level 3</th>
+                    <th>Level 4</th>
+                    <th>Level 5</th>
+                    <th>Level 6</th>
                     <th>Option</th>
+
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $itemdata = viewItemMaster($conn);
+
+                $itemdata = viewItemMaster($conn, 10, $page);
                 foreach ($itemdata as $key => $value) {
                 ?>
                     <tr>
@@ -60,7 +73,14 @@ require_once '../functions/item/itemFunction.php';
                         <td><?php echo $value['ItemCode']; ?></td>
                         <td><?php echo $value['ItemName']; ?></td>
                         <td><?php echo $value['Price']; ?></td>
-                        <!-- Additional columns for Level 1, Level 2, etc... -->
+                        <td><?php echo $value['Level1']; ?></td>
+                        <td><?php echo $value['Level2']; ?></td>
+                        <td><?php echo $value['Level3']; ?></td>
+                        <td><?php echo $value['Level4']; ?></td>
+                        <td><?php echo 2; //$value['Level5']; 
+                            ?></td>
+                        <td><?php echo 1; //$value['Level6']; 
+                            ?></td>
                         <td>
                             <a href="itemConfig.php?edit=<?= $value['idItems']; ?>"> <button type="button" class="edit-btn">Edit</button></a>
                             <a href="itemConfig.php?delete=<?= $value['idItems']; ?>"><button type="button" class="delete-btn">Delete</button></a>
@@ -71,9 +91,24 @@ require_once '../functions/item/itemFunction.php';
             </tbody>
         </table>
     </div>
+    <?php
+
+    pagination($conn, 10, $page);
+
+    ?>
+    <!--<div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a class="active" href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+    </div>-->
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Additional JS scripts here -->
 
 </body>
 

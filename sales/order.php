@@ -59,7 +59,7 @@
                 $item = getSalesData($conn);
                 foreach ($item as $row) {
                 ?>
-                    <option value="<?= $row['ItemCode']; ?>" data-iname="<?= $row['ItemName']; ?>" data-price="<?= $row['Price']; ?>"><?= $row['ItemCode']; ?></option>
+                    <option value="<?= $row['ItemCode']; ?>" data-iname="<?= $row['ItemName']; ?>" data-price="<?= $row['Price']; ?>"><?= $row['ItemName']; ?></option>
                 <?php } ?>
             </select>
             <input type="text" id="itemname" name="item-name-1" placeholder="Item Name">
@@ -67,7 +67,8 @@
             <input type="text" name="quantity-1" placeholder="Quantity">
         </div>
         <div id="fieldsContainer"></div>
-        <input type="text" name="hdata" id="hdata" value="1"><br>
+
+        <input type="hidden" name="hdata" id="hdata" value="1"><br>
 
 
         <button type="button" id="addFieldButton">Add More</button>
@@ -100,12 +101,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td><button type="button" id="edit">Edit</button></td>
+
             </tr>
         </tbody>
     </table>
