@@ -1,0 +1,23 @@
+.backPlate {
+  background-color: rgb(223, 223, 223);
+  margin: 5%;
+  border-radius: 35px;
+}
+
+.btn-primary {
+  border-radius: 30px;
+}
+
+.contentImg {
+  text-align: center;
+  width: 100%;
+}
+
+.logoArea {
+  align-items: center;
+  justify-content: center;
+}
+
+.logoName {
+  font-size: 20px;
+}
