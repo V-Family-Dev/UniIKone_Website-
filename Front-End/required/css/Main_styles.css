@@ -1,0 +1,228 @@
+
+a,
+a:hover {
+    color: white;
+}
+
+a.noUnderline {
+    text-decoration: none;
+}
+
+/* back tray color */
+.backTheam {
+    background-color: #8CBC68;
+}
+
+/* Button styles */
+.btnInit {
+    color: #000000;
+    outline: none;
+    border-color: rgb(255, 255, 255, 0);
+    border-radius: 15px;
+    padding: 2px 20px;
+    font-weight: 700;
+}
+
+.btnInit:active {
+    background-color: rgba(136, 255, 209, 0.5);
+    border-color: rgba(0, 0, 0, 0.5);
+    color: #000000;
+    
+}
+
+/* btn colors */
+.btnBlack {
+    background-color: rgb(59, 59, 61);
+    border-color: rgb(59, 59, 61);
+}
+
+.btnGreen {
+    background-color: rgb(38, 106, 49);
+    border-color: rgb(38, 106, 49);
+}
+
+.btnOrange {
+    background-color: rgb(255, 91, 25);
+    border-color: rgb(255, 91, 25);
+}
+
+.btnYellow {
+    background-color: rgb(226, 166, 64);
+    border-color: rgb(226, 166, 64);
+}
+.btnGray {
+    background-color: rgb(217, 217, 217);
+    border-color: rgb(217, 217, 217);
+}
+.btnRed {
+    background-color: rgb(255, 0, 0);
+    border-color: rgb(255, 0, 0);
+}
+.btnCream {
+    background-color: rgb(248, 226, 179);
+    border-color: rgb(248, 226, 179);
+}
+
+
+.btnBlack:active {
+    background-color: rgb(59, 59, 61, 0.8);
+    border-color: rgb(59, 59, 61, 0.8);
+}
+
+.btnGreen:active {
+    background-color: rgb(38, 106, 49, 0.8);
+    border-color: rgb(38, 106, 49, 0.8);
+}
+
+.btnOrange:active {
+    background-color: rgb(255, 91, 25, 0.8);
+    border-color: rgb(255, 91, 25, 0.8);
+}
+
+.btnYellow:active {
+    background-color: rgb(226, 166, 64, 0.8);
+    border-color: rgb(226, 166, 64, 0.8);
+}
+.btnGray:active {
+    background-color: rgb(217, 217, 217, 0.8);
+    border-color: rgb(217, 217, 217, 0.8);
+}
+.btnRed:active {
+    background-color: rgb(255, 0, 0, 0.8);
+    border-color: rgb(255, 0, 0, 0.8);
+}
+.btnCream:active {
+    background-color: rgb(248, 226, 179, 0.8);
+    border-color: rgb(248, 226, 179, 0.8);
+}
+
+
+
+.cRound {
+    border-radius: 15px;
+}
+
+.inputBox {
+    border: none;
+
+    outline-color: #266A31;
+    border-radius: 15px;
+    background-color: #fff;
+    padding: 0px 10px;
+    font-size: 15px;
+    width: 100%;
+    height: 30px;
+}
+
+.placeholder-text {
+    font-size: 15px;
+    color: #999;
+}
+
+select {
+    border: none;
+    outline: none;
+}
+
+
+
+
+/* Side bar -------------------------------------------------------------------------------------------------- */
+
+#sidebar-container {
+    min-height: 100vh;
+    background-color: #4a4a4c;
+    position: absolute;
+    z-index: 1;
+}
+
+/* Sidebar sizes when expanded and expanded */
+.sidebar-expanded {
+    width: 250px;
+}
+
+.sidebar-collapsed {
+    width: 60px;
+}
+
+
+/* Sidebar Menu item  ----------------------------------------------------- */
+
+#sidebar-container .list-group a {
+    height: 50px;
+    color: rgb(255, 255, 255);
+    background-color: #3B3B3D;
+
+}
+
+#sidebar-container:hover .list-group a:hover {
+    height: 50px;
+    color: rgb(255, 255, 255);
+    background-color: #8CBC68;
+}
+
+/* Submenu item ----------------------------------*/
+#sidebar-container .list-group .sidebar-submenu a {
+    height: 45px;
+    padding-left: 30px;
+}
+
+.sidebar-submenu {
+    font-size: 0.9rem;
+}
+
+
+/* Closed submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+    content: " \f0d7";
+    font-family: FontAwesome;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+}
+
+/* Opened submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+    content: " \f0d8";
+    font-family: FontAwesome;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+}
+
+/* Navigation bar ---------------------------------------------------------------------------------------------- */
+
+#naviBar {
+    position: relative;
+    z-index: 2;
+}
+
+.naviBarItem {
+    color: white;
+    margin: 8px;
+    font-weight: 500;
+    padding: 0;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Test colors */
+.bg1{
+    background-color: rgb(32, 83, 178);
+}
+.bg2{
+    background-color: rgb(223, 204, 33);
+}
+.bg3{
+    background-color: rgb(236, 36, 36);
+}
+.bg4{
+    background-color: rgb(49, 178, 32);
+}
+
+#showTable{
+    background-color: #8CBC68;
+}
+
+

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage User - UNIKONE SOLUTIONS</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="required/css/Main_styles.css">
+
+</head>
+
+<body class="containter">
+    <!-------------------------------------------------------------------------------- body-row Start ---------------------------------------------------------------------------------->
+    <div class="row">
+        <!--------------------------------------------------- Navi Bar Start --------------------------------------------------------------->
+        <div id="naviBar" class="col-12 sticky-top bg-dark">
+            <div class="row">
+                <div class="col-4 ml-3 d-flex align-items-center justify-content-start">
+                    <ul class="navbar-nav">
+                        <li>
+                            <a class="noUnderline" href="#top" data-toggle="sidebar-colapse">
+                                <i id="collapse-icon" class="fa fa-bars fa-lg"></i>
+                                <span class="text-light ml-2" style="font-size: 20px;"><Strong>Dashboard</Strong></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <ul class="navbar-nav flex-row d-flex justify-content-end">
+
+                        <li class="naviBarItem ">
+                            <i class="fa fa-calendar"></i>
+                        </li>
+
+                        <!-- Current Date -->
+                        <li class="naviBarItem">
+                            <span id="currentDate" class="bd-highlight align-self-center">[Current date]</span>
+                        </li>
+
+
+                        <!-- Badge -->
+                        <li class="naviBarItem">
+                            <a class="noUnderline" href="#">
+                                <i class="fa fa-bell"></i>
+                                <span class="badge rounded-pill badge-notification bg-danger">10 </span>
+                            </a>
+                        </li>
+
+                        <!-- Name -->
+                        <li>
+                            <a class="naviBarItem noUnderline" href="#">
+                                <div>
+                                    <div>
+                                        <span style="font-size: 15px;">Marley Botosh</span>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <span style="font-size: 11px;">Administrator</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Avatar -->
+                        <li class="dropdown naviBarItem">
+                            <a class="noUnderline dropdown-toggle d-flex align-items-center" href="#"
+                                id="navbarDropdownProfile" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="fa fa-user-circle fa-lg"></i>
+                                <!-- <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" 
+                    class="rounded-circle" height="22" alt="" loading="lazy" /> -->
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                                <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--------------------------------------------------- Navi Bar End --------------------------------------------------------------->
+
+        <!---------------------------------------------------------------- Sidebar Start --------------------------------------------------------->
+        <div class="col-12 bg2">
+            <div id="sidebar-container">
+                <ul class="list-group">
+
+                    <!-- Menu with submenu -->
+                    <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
+                        class=" list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="bi bi-person-plus-fill mr-2"></span>
+                            <span class="menu-collapsed">Employee Master</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='submenu1' class="collapse sidebar-submenu mb-3">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Create Employee</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Search Employee</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Manage User</span>
+                        </a>
+                    </div>
+
+                    <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
+                        class=" list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="bi bi-megaphone-fill mr-2"></span>
+                            <span class="menu-collapsed">Commission Master</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='submenu2' class="collapse sidebar-submenu mb-3">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Level</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Payment</span>
+                        </a>
+                    </div>
+
+                    <a href="#submenu3" data-toggle="collapse" aria-expanded="false"
+                        class=" list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="bi bi-receipt mr-2"></span>
+                            <span class="menu-collapsed">Sales Management</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='submenu3' class="collapse sidebar-submenu mb-3">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Create Sale Order</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Sale Order Return</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Search</span>
+                        </a>
+                    </div>
+
+                    <a href="#submenu4" data-toggle="collapse" aria-expanded="false"
+                        class=" list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="bi bi-file-earmark-text-fill mr-2"></span>
+                            <span class="menu-collapsed">Reports</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='submenu4' class="collapse sidebar-submenu mb-3">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Create Sale Order</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Create Sale Order</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Create Sale Order</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Create Sale Order</span>
+                        </a>
+                    </div>
+
+                    <a href="#submenu5" data-toggle="collapse" aria-expanded="false"
+                        class=" list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="bi bi-envelope-fill mr-2"></span>
+                            <span class="menu-collapsed">Send SMS</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='submenu5' class="collapse sidebar-submenu mb-3">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Send SMS</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="bi bi-arrow-return-right mr-2"></span>
+                            <span class="menu-collapsed">Push Notification</span>
+                        </a>
+                    </div>
+                </ul><!-- List Group END-->
+            </div>
+        </div>
+        <!---------------------------------------------------------------- Sidebar End ------------------------------------------------------------->
+
+
+        <!--*********************************************************** Content Area Start ***********************************************************************-->
+
+        <!---------------------------------------------------------------- 1 Row Start --------------------------------------------------------------->
+        <div class="col-12">
+            <!--------------------------------------------------- Manage User Start ------------------------------------------------------------->
+            <div class="row p-4">
+
+                <div class="col-12">
+                    <p class="h5 mb-1"><strong>Manage User</strong></p>
+                </div>
+
+                <div class="col">
+                    <!-- Section rectangle inside -->
+                    <div class="col backTheam cRound p-4">
+                        <div class="row pb-2 pt-2">
+
+                            <div class="col-3">
+                                <label for="Username" class="form-label">Username</label>
+                                <input class="inputBox" id="Username" type="text" placeholder="Username">
+                            </div>
+
+                        </div>
+                        <div class="row pb-2 pt-2">
+                            <div class="col-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input class="inputBox" id="password" type="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="row pb-2 pt-2">
+                            <!-- MU - Manage User -->
+                            <div class="col-1">
+                                <input id="MU_EM" type="checkbox">
+                                <label for="MU_EM" class="form-label"><strong>EM</strong></label>
+                            </div>
+                            <div class="col-1">
+                                <input id="MU_CM" type="checkbox">
+                                <label for="MU_CM" class="form-label"><strong>CM</strong></label>
+                            </div>
+                            <div class="col-1">
+                                <input id="MU_SM" type="checkbox">
+                                <label for="MU_SM" class="form-label"><strong>SM</strong></label>
+                            </div>
+                            <div class="col-1">
+                                <input id="MU_SS" type="checkbox">
+                                <label for="MU_SS" class="form-label"><strong>SS</strong></label>
+                            </div>
+                        </div>
+                        <div class="row pb-2 pt-2">
+                            <div class="col-3">
+                                <input class="btnInit btnOrange text-light" id="firstName" type="Submit" value="Create">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--------------------------------------------------- Manage User End ------------------------------------------------------------->
+        </div>
+        <!---------------------------------------------------------------- 1 Row End --------------------------------------------------------------->
+        <!---------------------------------------------------------------- 2 Row Start --------------------------------------------------------------->
+        <div class="col-12">
+            <!--------------------------------------------------- Area Access Start ----------------------------------------------------------->
+            <div class="row ml-3 mt-3">
+
+
+                <div class="col-12">
+                    <p class="h5 mb-1">Area Access</p>
+                </div>
+                <div class="col cRound">
+                    <!-- Section rectangle inside row -->
+                    <div class="col">
+                        <div class="row pb-2 pt-2">
+                            <!-- AA - Area Access -->
+                            <div class="col-1">
+                                <input id="AA_EM" type="checkbox">
+                                <label for="AA_EM" class="form-label"><strong>EM</strong></label>
+                            </div>
+                            <div class="col-1">
+                                <input id="AA_CM" type="checkbox">
+                                <label for="AA_CM" class="form-label"><strong>CM</strong></label>
+                            </div>
+                            <div class="col-1">
+                                <input id="AA_SM" type="checkbox">
+                                <label for="AA_SM" class="form-label"><strong>SM</strong></label>
+                            </div>
+                            <div class="col-1">
+                                <input id="AA_SS" type="checkbox">
+                                <label for="AA_SS" class="form-label"><strong>SS</strong></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--------------------------------------------------- Area Access End ----------------------------------------------------------->
+        </div>
+        <!---------------------------------------------------------------- 2 Row End --------------------------------------------------------------->
+        <!---------------------------------------------------------------- 3 Row Start --------------------------------------------------------------->
+        <div class="col-12">
+            <!--------------------------------------------------- Table Start ----------------------------------------------------------->
+            <div class="row p-4">
+                <div class="col">
+                    <!-- Section rectangle inside row -->
+                    <div class="col cRound p-4" style="background-color: rgb(223, 222, 222);">
+                        <div class="row justify-content-center">
+
+                            <table id="showTable" class="display backTheam">
+                                <thead>
+                                    <tr style="background-color: #b4b3b3">
+                                        <th scope="col">Name</th>
+                                        <th scope="col">UID</th>
+                                        <th scope="col">Access</th>
+                                        <th scope="col">Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dilrukshan Jayawardane</td>
+                                        <td>USD10300</td>
+                                        <td>EM,CM,SM</td>
+                                        <td><input class="btnInit btnGreen text-light" type="submit" id="editBtn"
+                                                name="editBtn" value="Edit"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--------------------------------------------------- Table End ----------------------------------------------------------->
+        </div>
+        <!---------------------------------------------------------------- 3 Row End --------------------------------------------------------------->
+
+        <!--*********************************************************** Content Area End ***********************************************************************-->
+
+    </div>
+    <!-------------------------------------------------------------------------------- body-row end ----------------------------------------------------------------------------------------------->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+    <script src="required/js/Main_script.js"></script>
+</body>
+
+</html>
